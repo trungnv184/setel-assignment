@@ -1,20 +1,14 @@
 import { Prop, Schema, SchemaFactory } from '@nestjs/mongoose';
 import { Document } from 'mongoose';
+import { OrderItem } from './order-items.schema';
+import { OrderMetaData } from './order-metada.schema';
 
 export type OrderModel = Order & Document;
+
 @Schema()
 export class Order {
-  @Prop()
-  productName: string;
-
-  @Prop()
-  productUrl: string;
-
-  @Prop()
-  price: number;
-
-  @Prop()
-  quantity: number;
+  @Prop([OrderItem])
+  orderItems: OrderItem[];
 
   @Prop()
   notes: string;
@@ -22,8 +16,14 @@ export class Order {
   @Prop()
   state: string;
 
+  @Prop(OrderMetaData)
+  metadata: OrderMetaData;
+
   @Prop({ type: Date, default: Date.now })
-  orderedDate: Date;
+  createdDate: Date;
+
+  @Prop({ type: Date, default: Date.now })
+  updatedDate: Date;
 }
 
 export const OrderSchema = SchemaFactory.createForClass(Order);

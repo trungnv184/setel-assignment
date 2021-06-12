@@ -1,34 +1,19 @@
+import { OrderItem } from '@common/interfaces/order-item.interface';
+import { OrderInformation } from '@common/interfaces/order-metadata.interface';
 import { OrderState } from '@common/enums/order-state.enum';
 import {
-  IsString,
   MaxLength,
-  IsNotEmpty,
-  IsNumber,
-  Min,
-  MinLength,
   IsOptional,
-  IsIn
+  IsIn,
+  IsObject,
+  IsArray
 } from 'class-validator';
 export class CreateOrderDto {
-  @IsString()
-  @MaxLength(100)
-  @IsNotEmpty()
-  readonly productName: string;
+  @IsArray()
+  orderItems: OrderItem[];
 
-  @IsString()
-  @MinLength(0)
-  @MaxLength(100)
-  readonly productUrl: string;
-
-  @IsNumber()
-  @IsNotEmpty()
-  @Min(0)
-  readonly price: number;
-
-  @IsNumber()
-  @IsNotEmpty()
-  @Min(1)
-  readonly quantity: number;
+  @IsObject()
+  readonly metadata: OrderInformation;
 
   @IsOptional()
   @MaxLength(100)
@@ -41,5 +26,5 @@ export class CreateOrderDto {
     OrderState.CANCELED,
     OrderState.DELIVERED
   ])
-  state: string;
+  readonly state: string;
 }

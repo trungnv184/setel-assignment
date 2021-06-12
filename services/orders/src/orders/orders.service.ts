@@ -2,7 +2,7 @@ import { WAIT_FOR_PAYMENT_PROCESSING } from '@configs';
 import { OrderState } from '@common/enums/order-state.enum';
 import { PaymentState } from '@common/enums/payment-state.enum';
 import { UpdatedOrderDto, CreateOrderDto } from '@dto';
-import { Inject, Injectable, NotFoundException } from '@nestjs/common';
+import { Injectable, NotFoundException } from '@nestjs/common';
 import { InjectModel } from '@nestjs/mongoose';
 import { PaymentsService } from '@payments/payments.service';
 import { Order, OrderModel } from '@schemas';
