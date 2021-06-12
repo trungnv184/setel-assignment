@@ -1,0 +1,25 @@
+{
+  "compilerOptions": {
+    "module": "commonjs",
+    "declaration": true,
+    "removeComments": true,
+    "emitDecoratorMetadata": true,
+    "experimentalDecorators": true,
+    "allowSyntheticDefaultImports": true,
+    "target": "es2017",
+    "sourceMap": true,
+    "outDir": "./dist",
+    "baseUrl": "./",
+    "incremental": true,
+    "paths": {
+      "@schemas": ["src/orders/schemas"],
+      "@dto": ["src/orders/dto"],
+      "@configs": ["src/orders/configs"],
+      "@common/*": ["src/orders/common/*"],
+      "@orders/*": ["src/orders/*"],
+      "@utils/*": ["src/orders/utils/*"],
+      "@payments/*": ["src/payments/*"]
+    }
+  },
+  "exclude": ["node_modules", "coverage", "dist", "**/*.spec.ts"]
+}
