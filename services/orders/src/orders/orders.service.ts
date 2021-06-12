@@ -2,7 +2,7 @@ import { WAIT_FOR_PAYMENT_PROCESSING } from '@configs';
 import { OrderState } from '@common/enums/order-state.enum';
 import { PaymentState } from '@common/enums/payment-state.enum';
 import { UpdatedOrderDto, CreateOrderDto } from '@dto';
-import { Injectable, NotFoundException } from '@nestjs/common';
+import { Injectable, Logger, NotFoundException } from '@nestjs/common';
 import { InjectModel } from '@nestjs/mongoose';
 import { PaymentsService } from '@payments/payments.service';
 import { Order, OrderModel } from '@schemas';
@@ -11,6 +11,7 @@ import asyncDelay from '@utils/asyncDelay';
 
 @Injectable()
 export class OrdersService {
+  private readonly logger = new Logger(OrdersService.name);
   constructor(
     @InjectModel(Order.name) private readonly orderModel: Model<OrderModel>,
     private readonly paymentService: PaymentsService
@@ -73,12 +74,16 @@ export class OrdersService {
   public async processPayment(orderId: string, order: Order): Promise<Order> {
     if (order && order.state === OrderState.CREATED) {
       const status = await this.paymentService.processPayment(order);
-
       const isConfirmed = status === PaymentState.CONFIRMED;
-
-      await this.orderModel.findOneAndUpdate(
+      await this.orderModel.updateOne(
         { _id: order },
         { state: isConfirmed ? OrderState.CONFIRMED : OrderState.CANCELED }
+      );
+
+      this.logger.debug(
+        `#process Payment response status ${
+          isConfirmed ? 'confirmed' : 'canceled'
+        }`
       );
 
       return this.findOne(orderId);
@@ -93,7 +98,7 @@ export class OrdersService {
   ): Promise<Order> {
     if (order && order.state === OrderState.CONFIRMED) {
       await asyncDelay(WAIT_FOR_PAYMENT_PROCESSING);
-      await this.orderModel.findOneAndUpdate(
+      await this.orderModel.updateOne(
         { _id: orderId },
         { state: OrderState.DELIVERED }
       );
