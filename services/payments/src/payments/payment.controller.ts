@@ -8,6 +8,6 @@ export class PaymentController {
 
   @MessagePattern('PROCESS_ORDER_PAYMENT')
   async processPaymentStatus(order: any): Promise<boolean> {
-    return this.paymentService.isOrderPaymentConfirmed(order);
+    return this.paymentService.isValidOrder(order);
   }
 }
