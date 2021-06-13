@@ -9,7 +9,7 @@ import { Logger } from '@nestjs/common';
 import { OrderState } from '@common/enums/order-state.enum';
 import { PaymentsService } from '@payments/payments.service';
 import { PaymentState } from '@common/enums/payment-state.enum';
-import { DELAY_DELIVERY } from '@configs';
+import { DELAY_DELIVERY } from '@orders/configs/environment.config';
 
 @Processor(OrderConstant.ORDER_QUEUE_NAME)
 export class OrderQueueProcessor {

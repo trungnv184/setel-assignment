@@ -1,3 +1,4 @@
+import { RABBIT_MQ_URL } from '@configs/environment.config';
 import { NestFactory } from '@nestjs/core';
 import { MicroserviceOptions, Transport } from '@nestjs/microservices';
 import { AppModule } from './app.module';
@@ -8,9 +9,7 @@ async function bootstrap() {
     {
       transport: Transport.RMQ,
       options: {
-        urls: [
-          'amqps://hyyyfwsq:Znh8CHBdx4vZFBAajeD3xgWdKkqeOvwu@snake.rmq2.cloudamqp.com/hyyyfwsq'
-        ],
+        urls: [RABBIT_MQ_URL],
         queue: 'payment_queue',
         queueOptions: {
           durable: false
