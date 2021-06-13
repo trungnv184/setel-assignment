@@ -3,9 +3,10 @@ import { Module } from '@nestjs/common';
 import { OrdersController } from './orders.controller';
 import { OrdersService } from './orders.service';
 import { MongooseModule } from '@nestjs/mongoose';
-import { Order, OrderSchema } from 'src/orders/schemas';
+import { Order, OrderSchema } from '@orders/schemas';
 import { PaymentsModule } from '@payments/payments.module';
 import { BullModule } from '@nestjs/bull';
+import { OrderQueueProcessor } from '@orders/order-queue.processor';
 @Module({
   imports: [
     MongooseModule.forFeature([
@@ -21,7 +22,7 @@ import { BullModule } from '@nestjs/bull';
   ],
 
   controllers: [OrdersController],
-  providers: [OrdersService],
+  providers: [OrdersService, OrderQueueProcessor],
   exports: [OrdersService]
 })
 export class OrdersModule {}

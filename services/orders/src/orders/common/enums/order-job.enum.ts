@@ -1,5 +1,6 @@
 export enum OrderJob {
-  CONFIRMED = 'Confirmed',
-  CANCELED = 'Canceled',
-  DELIVERED = 'Delivered'
+  PROCESS_PAYMENT = 'PROCESS_PAYMENT',
+  CONFIRMED = 'CONFIRMED',
+  CANCELLED = 'CANCELED',
+  DELIVERED = 'DELIVERED'
 }

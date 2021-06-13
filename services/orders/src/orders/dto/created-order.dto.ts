@@ -23,7 +23,7 @@ export class CreateOrderDto {
   @IsIn([
     OrderState.CREATED,
     OrderState.CONFIRMED,
-    OrderState.CANCELED,
+    OrderState.CANCELLED,
     OrderState.DELIVERED
   ])
   readonly state: string;

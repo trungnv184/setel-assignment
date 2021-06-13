@@ -1,24 +1,17 @@
-import { DELAY_DELIVERY } from '@configs';
+import { OrderQueueProcessor } from '@orders/order-queue.processor';
 import { OrderState } from '@common/enums/order-state.enum';
-import { PaymentState } from '@common/enums/payment-state.enum';
-import { OrderConstant } from '@common/constants/order.constant';
 import { UpdatedOrderDto, CreateOrderDto } from '@dto';
 import { Injectable, Logger, NotFoundException } from '@nestjs/common';
 import { InjectModel } from '@nestjs/mongoose';
-import { PaymentsService } from '@payments/payments.service';
 import { Order, OrderModel } from '@schemas';
 import { Model } from 'mongoose';
-import asyncDelay from '@utils/asyncDelay';
-import { InjectQueue } from '@nestjs/bull';
-import { Queue } from 'bull';
 
 @Injectable()
 export class OrdersService {
   private readonly logger = new Logger(OrdersService.name);
   constructor(
     @InjectModel(Order.name) private readonly orderModel: Model<OrderModel>,
-    @InjectQueue(OrderConstant.ORDER_QUEUE_NAME) private orderQueue: Queue,
-    private readonly paymentService: PaymentsService
+    private readonly orderQueueProcessor: OrderQueueProcessor
   ) {}
 
   public async create(createdOrderDto: CreateOrderDto): Promise<Order> {
@@ -26,17 +19,9 @@ export class OrdersService {
       ...createdOrderDto,
       state: OrderState.CREATED
     };
-    const savedOrderModel = new this.orderModel(orderToSave);
-    const savedOrder = await savedOrderModel.save();
-
-    const { _id: orderId } = savedOrder;
-    setTimeout(async () => {
-      this.processPayment(orderId, savedOrder).then((orderData) => {
-        this.processOrderDeliver(orderId, orderData);
-      });
-    }, 0);
-
-    return savedOrder;
+    const order = await this.orderModel.create(orderToSave);
+    await this.orderQueueProcessor.addOrderForPaymentProcessing(order);
+    return order;
   }
 
   public async all(): Promise<Order[]> {
@@ -68,49 +53,14 @@ export class OrdersService {
     if (orderToCancel && orderToCancel.state !== OrderState.DELIVERED) {
       orderToCancel = await this.orderModel.findOneAndUpdate(
         { _id: orderId },
-        { state: OrderState.CANCELED }
+        { state: OrderState.CANCELLED }
       );
+
+      if (!orderToCancel) {
+        throw new NotFoundException(`Order #${orderId} not found`);
+      }
     }
 
     return orderToCancel;
-  }
-
-  public async processPayment(orderId: string, order: Order): Promise<Order> {
-    if (order && order.state === OrderState.CREATED) {
-      const status = await this.paymentService.processPayment(order);
-      const isConfirmed = status === PaymentState.CONFIRMED;
-
-      await this.orderModel.updateOne(
-        { _id: order },
-        { state: isConfirmed ? OrderState.CONFIRMED : OrderState.CANCELED }
-      );
-
-      this.logger.debug(
-        `#process Payment response status ${
-          isConfirmed ? 'confirmed' : 'canceled'
-        }`
-      );
-
-      return this.findOne(orderId);
-    }
-
-    return order;
-  }
-
-  public async processOrderDeliver(
-    orderId: string,
-    order: Order
-  ): Promise<Order> {
-    if (order && order.state === OrderState.CONFIRMED) {
-      await asyncDelay(DELAY_DELIVERY);
-      await this.orderModel.updateOne(
-        { _id: orderId },
-        { state: OrderState.DELIVERED }
-      );
-
-      return this.findOne(orderId);
-    }
-
-    return order;
   }
 }
