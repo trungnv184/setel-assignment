@@ -8,15 +8,10 @@ export class PaymentService {
   private readonly VALID_NUMBER = 1.5;
 
   public isValidOrder(order): boolean {
-    const comparedNumber = this.randomNumber(
-      this.LOWEST_ORDER_NUMBER,
-      this.HIGHEST_ORDER_NUMBER
-    );
+    const comparedNumber = this.randomNumber(this.LOWEST_ORDER_NUMBER, this.HIGHEST_ORDER_NUMBER);
 
     this.logger.debug(
-      `Payment Process received data ${JSON.stringify(
-        order
-      )} and check valid order result ${comparedNumber}`
+      `Payment Process received data ${JSON.stringify(order)} and check valid order result ${comparedNumber}`
     );
 
     // Assume the logic return valid payment based on random number and number of ordered item greater than 2
