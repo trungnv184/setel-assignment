@@ -15,6 +15,7 @@
     "^@common(.*)$": "<rootDir>/src/orders/common$1",
     "^@orders(.*)$": "<rootDir>/src/orders/$1",
     "^@utils(.*)$": "<rootDir>/src/orders/utils$1",
+    "^@services(.*)$": "<rootDir>/src/orders/services/$1",
     "^@payments(.*)$": "<rootDir>/src/payments$1"
   }
 }

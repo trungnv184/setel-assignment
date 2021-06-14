@@ -18,6 +18,7 @@
       "@common/*": ["src/orders/common/*"],
       "@orders/*": ["src/orders/*"],
       "@utils/*": ["src/orders/utils/*"],
+      "@services/*": ["src/orders/services/*"],
       "@payments/*": ["src/payments/*"]
     }
   },
