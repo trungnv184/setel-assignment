@@ -21,31 +21,21 @@ export class OrderQueueProcessor {
   ) {}
 
   public async addOrderForPaymentProcessing(order: Order): Promise<void> {
-    await this.orderQueue.add(
-      OrderJob.PROCESS_PAYMENT,
-      { order },
-      { delay: DELAY_DELIVERY }
-    );
+    await this.orderQueue.add(OrderJob.PROCESS_PAYMENT, { order }, { delay: DELAY_DELIVERY });
   }
 
   @Process(OrderJob.PROCESS_PAYMENT)
-  public async processPayment({
-    data
-  }: Job<{ order: OrderModel }>): Promise<void> {
+  public async processPayment({ data }: Job<{ order: OrderModel }>): Promise<void> {
     if (data?.order.state !== OrderState.CREATED) {
       return;
     }
 
     this.logger.debug(`Starting PROCESS_PAYMENT job ${data.order._id}`);
-    const processedPaymentStatus = await this.paymentService.processPayment(
-      data.order
-    );
+    const processedPaymentStatus = await this.paymentService.processPayment(data.order);
 
     this.logger.debug(
       `PROCESS_PAYMENT job response status ${
-        processedPaymentStatus === PaymentState.CONFIRMED
-          ? 'CONFIRMED'
-          : 'CANCELLED'
+        processedPaymentStatus === PaymentState.CONFIRMED ? 'CONFIRMED' : 'CANCELLED'
       }`
     );
 
@@ -57,25 +47,17 @@ export class OrderQueueProcessor {
   }
 
   @Process(OrderJob.CONFIRMED)
-  public async processConfirmedOrder(
-    job: Job<{ orderId: string }>
-  ): Promise<void> {
+  public async processConfirmedOrder(job: Job<{ orderId: string }>): Promise<void> {
     const orderId = job.data.orderId;
 
     await this.updateOrderStatus(orderId, OrderState.CONFIRMED);
     this.logger.debug(`Staring order CONFIRMED job #${orderId}`);
 
-    this.orderQueue.add(
-      OrderJob.DELIVERED,
-      { orderId },
-      { delay: DELAY_DELIVERY }
-    );
+    this.orderQueue.add(OrderJob.DELIVERED, { orderId }, { delay: DELAY_DELIVERY });
   }
 
   @Process(OrderJob.DELIVERED)
-  public async processDeliveredOrder(
-    job: Job<{ orderId: string }>
-  ): Promise<void> {
+  public async processDeliveredOrder(job: Job<{ orderId: string }>): Promise<void> {
     const orderId = job.data.orderId;
     const order = await this.orderModel.findById(orderId);
 
@@ -86,9 +68,7 @@ export class OrderQueueProcessor {
   }
 
   @Process(OrderJob.CANCELLED)
-  public async processCanceledOrder(
-    job: Job<{ orderId: string }>
-  ): Promise<void> {
+  public async processCanceledOrder(job: Job<{ orderId: string }>): Promise<void> {
     const orderId = job.data.orderId;
     this.logger.debug(`Staring order CANCELLED job ${orderId}`);
 
@@ -96,9 +76,6 @@ export class OrderQueueProcessor {
   }
 
   private updateOrderStatus(orderId: string, state: OrderState) {
-    return this.orderModel.updateOne(
-      { _id: orderId },
-      { state, updatedDate: new Date() }
-    );
+    return this.orderModel.updateOne({ _id: orderId }, { state, updatedDate: new Date() });
   }
 }

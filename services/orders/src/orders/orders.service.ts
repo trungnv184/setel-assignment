@@ -32,14 +32,8 @@ export class OrdersService {
     return this.orderModel.findById({ _id: orderId });
   }
 
-  public async updateOrder(
-    orderId: string,
-    updatedOrderDto: UpdatedOrderDto
-  ): Promise<Order> {
-    const orderToUpdate = await this.orderModel.findOneAndUpdate(
-      { _id: orderId },
-      updatedOrderDto
-    );
+  public async updateOrder(orderId: string, updatedOrderDto: UpdatedOrderDto): Promise<Order> {
+    const orderToUpdate = await this.orderModel.findOneAndUpdate({ _id: orderId }, updatedOrderDto);
 
     if (!orderToUpdate) {
       throw new NotFoundException(`Order #${orderId} not found`);
@@ -51,10 +45,7 @@ export class OrdersService {
   public async cancelOrderById(orderId: string): Promise<Order> {
     let orderToCancel = await this.findOne(orderId);
     if (orderToCancel && orderToCancel.state !== OrderState.DELIVERED) {
-      orderToCancel = await this.orderModel.findOneAndUpdate(
-        { _id: orderId },
-        { state: OrderState.CANCELLED }
-      );
+      orderToCancel = await this.orderModel.findOneAndUpdate({ _id: orderId }, { state: OrderState.CANCELLED });
 
       if (!orderToCancel) {
         throw new NotFoundException(`Order #${orderId} not found`);

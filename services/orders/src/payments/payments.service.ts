@@ -11,11 +11,7 @@ export class PaymentsService {
     private readonly client: ClientProxy
   ) {}
   public async processPayment(order: Order): Promise<PaymentState> {
-    const processedPaymentStatus = await this.client
-      .send(PaymentConstant.PROCESS_ORDER_PAYMENT, order)
-      .toPromise();
-    return processedPaymentStatus
-      ? PaymentState.CONFIRMED
-      : PaymentState.DECLINED;
+    const processedPaymentStatus = await this.client.send(PaymentConstant.PROCESS_ORDER_PAYMENT, order).toPromise();
+    return processedPaymentStatus ? PaymentState.CONFIRMED : PaymentState.DECLINED;
   }
 }

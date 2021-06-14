@@ -1,16 +1,7 @@
 import { CreateOrderDto } from '@dto';
 import { Order } from '@schemas';
 import { OrdersService } from './orders.service';
-import {
-  Controller,
-  Get,
-  Post,
-  Param,
-  Body,
-  Delete,
-  UsePipes,
-  ValidationPipe
-} from '@nestjs/common';
+import { Controller, Get, Post, Param, Body, Delete, UsePipes, ValidationPipe } from '@nestjs/common';
 
 @Controller('orders')
 export class OrdersController {
@@ -34,9 +25,7 @@ export class OrdersController {
 
   @Post()
   @UsePipes(new ValidationPipe())
-  public async createOrder(
-    @Body() createdOrderDto: CreateOrderDto
-  ): Promise<Order> {
+  public async createOrder(@Body() createdOrderDto: CreateOrderDto): Promise<Order> {
     return this.orderService.create(createdOrderDto);
   }
 

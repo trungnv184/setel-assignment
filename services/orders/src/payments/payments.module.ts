@@ -10,9 +10,7 @@ import { PaymentConstant } from '@common/constants/payment.constant';
         name: PaymentConstant.PAYMENT_SERVICE,
         transport: Transport.RMQ,
         options: {
-          urls: [
-            'amqps://hyyyfwsq:Znh8CHBdx4vZFBAajeD3xgWdKkqeOvwu@snake.rmq2.cloudamqp.com/hyyyfwsq'
-          ],
+          urls: ['amqps://hyyyfwsq:Znh8CHBdx4vZFBAajeD3xgWdKkqeOvwu@snake.rmq2.cloudamqp.com/hyyyfwsq'],
           queue: 'payment_queue',
           queueOptions: {
             durable: false

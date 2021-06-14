@@ -1,0 +1,20 @@
+{
+  "moduleDirectories": ["node_modules", "src"],
+  "moduleFileExtensions": ["js", "json", "ts"],
+  "testEnvironment": "node",
+  "testRegex": ".spec.ts$",
+  "transform": {
+    "^.+\\.ts$": "ts-jest"
+  },
+  "coverageDirectory": "./coverage",
+  "collectCoverage": true,
+  "moduleNameMapper": {
+    "^@schemas$": "<rootDir>/src/orders/schemas",
+    "^@dto(.*)$": "<rootDir>/src/orders/dto$1",
+    "^@configs(.*)$": "<rootDir>/src/orders/config$1",
+    "^@common(.*)$": "<rootDir>/src/orders/common$1",
+    "^@orders(.*)$": "<rootDir>/src/orders/$1",
+    "^@utils(.*)$": "<rootDir>/src/orders/utils$1",
+    "^@payments(.*)$": "<rootDir>/src/payments$1"
+  }
+}
