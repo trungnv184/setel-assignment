@@ -30,7 +30,7 @@ export class OrderQueueProcessor {
       return;
     }
 
-    this.logger.debug(`Starting PROCESS_PAYMENT job ${data.order._id}`);
+    this.logger.debug(`Starting PROCESS_PAYMENT job #${data.order._id}`);
     const processedPaymentStatus = await this.paymentService.processPayment(data.order);
 
     this.logger.debug(
