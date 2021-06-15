@@ -19,6 +19,14 @@ services:
       dockerfile: Dockerfile
     ports:
       - "8001:8001"
+
+  clients:
+    image: orders-and-payments/clients:${TAG:-latest}
+    build:
+      context: ./clients
+      dockerfile: Dockerfile
+    ports:
+      - "3000:3000"
     
   redis:
     image: "bitnami/redis:latest"
