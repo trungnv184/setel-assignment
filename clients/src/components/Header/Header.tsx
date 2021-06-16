@@ -1,11 +1,12 @@
 import React from 'react';
 import { Input } from 'semantic-ui-react';
-type HeaderProps = any;
-const Header: React.FC<HeaderProps> = () => {
+import { StyledHeaderWrapper } from './Header.style';
+
+const Header = () => {
   return (
-    <header>
-      <Input icon="search" placeholder="Search..." />
-    </header>
+    <>
+      <StyledHeaderWrapper></StyledHeaderWrapper>
+    </>
   );
 };
 
