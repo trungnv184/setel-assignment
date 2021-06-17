@@ -27,6 +27,7 @@
   },
   "scripts": {
     "start": "yarn server:start & react-scripts start",
+    "start:web": "react-scripts start",
     "build": "react-scripts build",
     "format": "prettier --write \"src/**/*.+(js|jsx|json|yml|yaml|css|md|tsx|ts)\"",
     "lint": "tslint -c tslint.json src/**/*.{ts,tsx} --fix --format verbose",
@@ -60,17 +61,18 @@
   },
   "lint-staged": {
     "src/**/*.+(js|jsx|tsx)": [
-      "eslint --fix",
+      "yarn lint",
       "git add"
     ],
     "src/**/*.+(json|css|md|tsx|ts)": [
-      "prettier --write",
+      "yarn format",
       "git add"
     ]
   },
   "devDependencies": {
     "@types/react-router-dom": "^5.1.7",
     "@types/styled-components": "^5.1.10",
+    "moment": "^2.29.1",
     "prettier": "^2.3.1",
     "tslint": "^6.1.3",
     "tslint-config-prettier": "^1.18.0",

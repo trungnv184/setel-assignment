@@ -6,7 +6,7 @@ type SearchProps = {
 const Search: React.FC<SearchProps> = ({ onSearch }) => {
   return (
     <StyledSearchWrapper>
-      <SearchInput fluid icon="search" placeholder="Search books..." onChange={onSearch} />
+      <SearchInput fluid={true} icon="search" placeholder="Search books..." onChange={onSearch} />
     </StyledSearchWrapper>
   );
 };
