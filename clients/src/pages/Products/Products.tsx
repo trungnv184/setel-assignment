@@ -16,13 +16,9 @@ const Products: React.FC<any> = () => {
   }
 
   console.log(data.products, 'Products');
-  const onSearchProduct = (event: React.ChangeEvent<HTMLInputElement>) => {
-    console.log(event.target.value);
-  };
 
   return (
     <>
-      <Search onSearch={onSearchProduct} />
       <ProductList products={data.products} />
     </>
   );

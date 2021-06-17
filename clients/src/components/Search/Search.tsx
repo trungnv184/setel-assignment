@@ -1,4 +1,3 @@
-import { Input } from 'semantic-ui-react';
 import { SearchInput, StyledSearchWrapper } from './Search.style';
 
 type SearchProps = {

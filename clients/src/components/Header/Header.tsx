@@ -1,11 +1,12 @@
-import React from 'react';
-import { Input } from 'semantic-ui-react';
+import { MenuBar } from 'components';
 import { StyledHeaderWrapper } from './Header.style';
 
 const Header = () => {
   return (
     <>
-      <StyledHeaderWrapper></StyledHeaderWrapper>
+      <StyledHeaderWrapper>
+        <MenuBar />
+      </StyledHeaderWrapper>
     </>
   );
 };

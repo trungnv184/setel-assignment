@@ -7,10 +7,10 @@ type LayoutProps = {
 
 const Layout: React.FC<LayoutProps> = ({ children }) => {
   return (
-    <StyledAppContainer>
+    <>
       <Header />
-      <main>{children}</main>
-    </StyledAppContainer>
+      <StyledAppContainer>{children}</StyledAppContainer>
+    </>
   );
 };
 
