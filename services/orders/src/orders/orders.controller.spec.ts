@@ -14,14 +14,16 @@ const ORDERS_MOCK = [
   {
     orderItems: [
       {
-        productName: 'The Clean Architecture',
-        productUrl: 'http://amazon.com/books/it/clean-architecture',
+        id: 1,
+        name: 'The Clean Architecture',
+        url: 'http://amazon.com/books/it/clean-architecture',
         price: 50000,
         quantity: 2
       }
     ],
     metadata: {
-      customerName: 'Trung Nguyen',
+      firsName: 'Trung',
+      lastName: 'Nguyen',
       address: 'Ho Chi Minh City',
       phoneNumber: '0906925896',
       payMethod: 'Cash'
@@ -115,7 +117,7 @@ describe('OrdersController', () => {
 
     const createdOrderDto = {
       ...orderMock
-    } as CreateOrderDto;
+    } as unknown as CreateOrderDto;
     jest.spyOn(orderService, 'create').mockResolvedValue(orderMock);
     expect(await ordersController.createOrder(createdOrderDto)).toBe(orderMock);
   });

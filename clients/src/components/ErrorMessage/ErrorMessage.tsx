@@ -3,7 +3,7 @@ const ErrorMessage = () => {
   return (
     <Message>
       <Message.Header>Something Went Wrong</Message.Header>
-      <p>Dear customer, our system got some trouble issues. Please try again later</p>
+      <Message.Content>Dear customer, our system got some trouble issues. Please try again later</Message.Content>
     </Message>
   );
 };

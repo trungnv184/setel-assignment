@@ -1,7 +1,9 @@
 export type PayMethod = 'Card' | 'Cash';
 export interface OrderInformation {
-  customerName: string;
+  firstName: string;
+  lastName: string;
   address: string;
   phoneNumber: string;
+  notes: string;
   payMethod: PayMethod;
 }

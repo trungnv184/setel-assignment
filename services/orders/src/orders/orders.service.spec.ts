@@ -16,14 +16,16 @@ const ORDERS_MOCK = [
   {
     orderItems: [
       {
-        productName: 'The Clean Architecture',
-        productUrl: 'http://amazon.com/books/it/clean-architecture',
+        id: 1,
+        name: 'The Clean Architecture',
+        url: 'http://amazon.com/books/it/clean-architecture',
         price: 50000,
         quantity: 2
       }
     ],
     metadata: {
-      customerName: 'Trung Nguyen',
+      firstName: 'Trung',
+      lastName: 'Nguyen',
       address: 'Ho Chi Minh City',
       phoneNumber: '0906925896',
       payMethod: 'Cash'

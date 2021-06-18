@@ -1,4 +1,4 @@
-export class OrderItem {
+export interface ProductCart {
   id: number;
   name: string;
   url: string;

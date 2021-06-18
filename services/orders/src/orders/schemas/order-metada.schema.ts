@@ -2,7 +2,10 @@ import { Prop } from '@nestjs/mongoose';
 
 export class OrderMetaData {
   @Prop()
-  customerName: string;
+  firstName: string;
+
+  @Prop()
+  lastName: string;
 
   @Prop()
   address: string;

@@ -19,11 +19,13 @@ export const typeDefs = gql`
     name: String
     url: String
     price: Int
+    quantity: Int
     createdDate: String
   }
 
   type Query {
     products: [Product]
+    getProductsCart: [Cart]
   }
 
   type Mutation {
@@ -34,6 +36,7 @@ export const typeDefs = gql`
     name: String
     url: String
     price: Int
+    quantity: Int
   }
 `;
 
@@ -42,15 +45,19 @@ export const resolvers = {
     products() {
       return productModel.list();
     },
+    getProductsCart() {
+      return cartsModel.list();
+    },
   },
   Mutation: {
     addToCart: async (_, { cartInput }) => {
-      const { name, url, price } = cartInput;
+      const { name, url, price, quantity } = cartInput;
       return cartsModel.create({
         id: getUUID(),
         name,
         url,
         price,
+        quantity: quantity ? quantity : 1,
       });
     },
   },

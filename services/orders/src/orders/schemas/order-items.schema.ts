@@ -2,10 +2,13 @@ import { Prop } from '@nestjs/mongoose';
 
 export class OrderItem {
   @Prop()
-  productName: string;
+  id: number;
 
   @Prop()
-  productUrl: string;
+  name: string;
+
+  @Prop()
+  url: string;
 
   @Prop()
   price: number;

@@ -12,4 +12,16 @@ const GET_PRODUCTS = gql`
   }
 `;
 
-export { GET_PRODUCTS };
+const GET_PRODUCTS_IN_CART = gql`
+  query GetProductsCart {
+    getProductsCart {
+      id
+      name
+      price
+      url
+      quantity
+    }
+  }
+`;
+
+export { GET_PRODUCTS, GET_PRODUCTS_IN_CART };

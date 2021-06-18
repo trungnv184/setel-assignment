@@ -1,6 +1,6 @@
 import { Layout } from 'components';
 import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
-import { Products, Orders } from 'pages';
+import { Products, Orders, Carts } from 'pages';
 import './App.css';
 
 const AppRouter = () => {
@@ -9,6 +9,10 @@ const AppRouter = () => {
       <Route path="/" exact={true}>
         <Products />
       </Route>
+      <Route path="/your-cart">
+        <Carts />
+      </Route>
+
       <Route path="/orders">
         <Orders />
       </Route>
