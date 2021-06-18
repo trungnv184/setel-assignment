@@ -1,3 +1,5 @@
+import { useMutation } from '@apollo/client';
+import { CREATE_ORDER_PRODUCTS } from 'graphql/mutation';
 import { useState } from 'react';
 import { Segment, Form, Input, TextArea, Message } from 'semantic-ui-react';
 import { ProductCart } from 'types/product-cart';
@@ -17,6 +19,10 @@ const OrderForm: React.FC<OrderFormProps> = ({ carts }) => {
 
   const [errorMessage, setErrorMessage] = useState();
 
+  const [createOrder] = useMutation(CREATE_ORDER_PRODUCTS);
+
+  //  console.log(data);
+
   const handleChangeValue = (e: React.FormEvent<HTMLInputElement>) => {
     const { name, value } = e.target as any;
     setFormState({
@@ -32,8 +38,11 @@ const OrderForm: React.FC<OrderFormProps> = ({ carts }) => {
         setErrorMessage(undefined);
       }
 
-      const payload = buildOrderPayload(orderInformation, carts, formState.notes);
-      console.log(payload);
+      createOrder({
+        variables: {
+          orderInput: buildOrderPayload(orderInformation, carts, formState.notes),
+        },
+      });
     } catch (error) {
       setErrorMessage(error?.message);
     }

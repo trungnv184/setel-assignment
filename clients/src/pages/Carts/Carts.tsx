@@ -1,7 +1,8 @@
 import { useQuery } from '@apollo/client';
 import { CartList, ErrorMessage, OrderForm } from 'components';
 import { GET_PRODUCTS_IN_CART } from 'graphql/query';
-import { Button, Dimmer, Loader, Message } from 'semantic-ui-react';
+import { Dimmer, Loader, Message } from 'semantic-ui-react';
+import { ProductCart } from 'types/product-cart';
 
 const Carts: React.FC<any> = () => {
   const { data, loading, error } = useQuery(GET_PRODUCTS_IN_CART, {
@@ -18,7 +19,7 @@ const Carts: React.FC<any> = () => {
 
   if (error) return <ErrorMessage />;
 
-  const carts = data?.getProductsCart || [];
+  const carts = (data?.getProductsCart as ProductCart[]) || [];
 
   return (
     <>

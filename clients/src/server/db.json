@@ -87,51 +87,16 @@
   ],
   "carts": [
     {
-      "id": 1623987601,
+      "id": 1624023551,
+      "name": "Rèn luyện tư duy phản biện",
+      "url": "https://salt.tikicdn.com/cache/w444/ts/product/22/cb/a9/524a27dcd45e8a13ae6eecb3dfacba7c.jpg",
+      "price": 200000,
+      "quantity": 1
+    },
+    {
+      "id": 1624023555,
       "name": "Tâm lý học hạnh phúc",
       "url": "https://salt.tikicdn.com/cache/280x280/ts/product/59/e3/e7/642ce38017ac1d35f2e87234b6fd56f2.jpg",
-      "price": 200000,
-      "quantity": 1
-    },
-    {
-      "id": 1623987621,
-      "name": "Lịch sử kinh tế học",
-      "url": "https://salt.tikicdn.com/cache/280x280/ts/product/c4/31/99/a563d0d6209da20767f88f4d58158ebc.jpg",
-      "price": 200000,
-      "quantity": 1
-    },
-    {
-      "id": 1623987635,
-      "name": "Lịch sử kinh tế học",
-      "url": "https://salt.tikicdn.com/cache/280x280/ts/product/c4/31/99/a563d0d6209da20767f88f4d58158ebc.jpg",
-      "price": 200000,
-      "quantity": 1
-    },
-    {
-      "id": 1623987701,
-      "name": "Nhà nước khởi tạo",
-      "url": "https://salt.tikicdn.com/cache/280x280/ts/product/48/21/aa/ae0f972ae6a8ed334a7101c96db77566.png",
-      "price": 200000,
-      "quantity": 1
-    },
-    {
-      "id": 1623988627,
-      "name": "Kinh tế học hài hước",
-      "url": "https://salt.tikicdn.com/cache/280x280/ts/product/4d/07/f8/b7f31766abebfb62e596db1a4b68c9b3.jpg",
-      "price": 200000,
-      "quantity": 1
-    },
-    {
-      "id": 1623989652,
-      "name": "Đừng chạy theo số đông",
-      "url": "https://salt.tikicdn.com/cache/280x280/ts/product/95/c5/71/f260011660001af960c42d7d2f1c5dc1.jpg",
-      "price": 200000,
-      "quantity": 1
-    },
-    {
-      "id": 1623989666,
-      "name": "Làm quen kinh tế học",
-      "url": "https://salt.tikicdn.com/cache/280x280/media/catalog/product/l/a/lam%20quen%20kinh%20te%20hoc%20qua%20biem%20hoa%20-%20t2.u547.d20160919.t134910.716081.jpg",
       "price": 200000,
       "quantity": 1
     }

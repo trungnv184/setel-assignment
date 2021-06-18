@@ -11,4 +11,26 @@ const ADD_PRODUCT_TO_CART = gql`
   }
 `;
 
-export { ADD_PRODUCT_TO_CART };
+const CREATE_ORDER_PRODUCTS = gql`
+  mutation CreateOrder($orderInput: OrderInput) {
+    createOrder(orderInput: $orderInput) {
+      orderItems {
+        id
+        name
+        url
+        price
+        quantity
+        createdDate
+      }
+      metadata {
+        firstName
+        lastName
+        address
+        phoneNumber
+      }
+      notes
+    }
+  }
+`;
+
+export { ADD_PRODUCT_TO_CART, CREATE_ORDER_PRODUCTS };
