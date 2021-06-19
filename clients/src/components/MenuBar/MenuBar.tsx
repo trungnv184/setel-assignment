@@ -1,5 +1,5 @@
 import { Link } from 'react-router-dom';
-import { Icon, Input, Label, Menu } from 'semantic-ui-react';
+import { Icon, Menu } from 'semantic-ui-react';
 
 const MenuBar = () => {
   return (
@@ -11,9 +11,6 @@ const MenuBar = () => {
             <strong>BOOK STORE</strong>
           </Link>
         </Menu.Item>
-        <Menu.Item>
-          <Input icon="search" placeholder="Search books..." />
-        </Menu.Item>
 
         <Menu.Menu position="right">
           <Menu.Item name="orders">
@@ -23,7 +20,6 @@ const MenuBar = () => {
           <Menu.Item name="cart" active={true}>
             <Icon name="cart" />
             <Link to="/your-cart">Your Cart</Link>
-            <Label color="teal">10</Label>
           </Menu.Item>
         </Menu.Menu>
       </Menu>

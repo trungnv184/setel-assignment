@@ -49,4 +49,12 @@ const GET_ORDER_BY_ID = gql`
   }
 `;
 
-export { GET_PRODUCTS, GET_PRODUCTS_IN_CART, GET_ORDER_BY_ID };
+const GET_ORDER_STATUS = gql`
+  query GetOrderStatus($orderId: String) {
+    getOrder(orderId: $orderId) {
+      state
+    }
+  }
+`;
+
+export { GET_PRODUCTS, GET_PRODUCTS_IN_CART, GET_ORDER_BY_ID, GET_ORDER_STATUS };

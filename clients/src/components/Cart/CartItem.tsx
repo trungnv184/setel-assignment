@@ -8,16 +8,14 @@ type CartItemProps = {
 const CartItem: React.FC<CartItemProps> = ({ cart }) => {
   const { name, url, price, quantity } = cart;
   return (
-    <>
-      <Table.Row>
-        <Table.Cell>
-          <Image src={url} size="small" />
-        </Table.Cell>
-        <Table.Cell singleLine={true}>{name}</Table.Cell>
-        <Table.Cell>{formatMoney(price)}</Table.Cell>
-        <Table.Cell>{quantity}</Table.Cell>
-      </Table.Row>
-    </>
+    <Table.Row>
+      <Table.Cell>
+        <Image src={url} size="small" />
+      </Table.Cell>
+      <Table.Cell singleLine={true}>{name}</Table.Cell>
+      <Table.Cell>{formatMoney(price)}</Table.Cell>
+      <Table.Cell>{quantity}</Table.Cell>
+    </Table.Row>
   );
 };
 

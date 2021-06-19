@@ -1,7 +1,6 @@
 // orderItems: OrderItem[];
 
 import { ProductCart } from './product-cart';
-
 export interface OrderInformation {
   firstName: string;
   lastName: string;
