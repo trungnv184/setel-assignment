@@ -20,12 +20,13 @@ export class OrdersService {
       state: OrderState.CREATED
     };
     const order = await this.orderModel.create(orderToSave);
+    this.logger.debug(`Order created successfully, ${order}`);
     await this.orderQueueProcessor.addOrderForPaymentProcessing(order);
     return order;
   }
 
   public async all(): Promise<Order[]> {
-    return this.orderModel.find().exec();
+    return this.orderModel.find().sort({ createdDate: -1 }).exec();
   }
 
   public async findOne(orderId: string): Promise<Order> {

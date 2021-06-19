@@ -24,4 +24,29 @@ const GET_PRODUCTS_IN_CART = gql`
   }
 `;
 
-export { GET_PRODUCTS, GET_PRODUCTS_IN_CART };
+const GET_ORDER_BY_ID = gql`
+  query GetOrder($orderId: String) {
+    getOrder(orderId: $orderId) {
+      id
+      orderItems {
+        id
+        name
+        price
+        url
+        quantity
+      }
+      metadata {
+        firstName
+        lastName
+        address
+        phoneNumber
+      }
+      notes
+      state
+      createdDate
+      updatedDate
+    }
+  }
+`;
+
+export { GET_PRODUCTS, GET_PRODUCTS_IN_CART, GET_ORDER_BY_ID };

@@ -14,6 +14,7 @@ const ADD_PRODUCT_TO_CART = gql`
 const CREATE_ORDER_PRODUCTS = gql`
   mutation CreateOrder($orderInput: OrderInput) {
     createOrder(orderInput: $orderInput) {
+      id
       orderItems {
         id
         name
@@ -29,6 +30,9 @@ const CREATE_ORDER_PRODUCTS = gql`
         phoneNumber
       }
       notes
+      state
+      createdDate
+      updatedDate
     }
   }
 `;

@@ -13,7 +13,7 @@ const CartItem: React.FC<CartItemProps> = ({ cart }) => {
         <Table.Cell>
           <Image src={url} size="small" />
         </Table.Cell>
-        <Table.Cell singleLine>{name}</Table.Cell>
+        <Table.Cell singleLine={true}>{name}</Table.Cell>
         <Table.Cell>{formatMoney(price)}</Table.Cell>
         <Table.Cell>{quantity}</Table.Cell>
       </Table.Row>

@@ -8,7 +8,7 @@ type CartListProps = {
 };
 const CartList: React.FC<CartListProps> = ({ carts }) => {
   return (
-    <Table celled padded>
+    <Table celled={true} padded={true}>
       <CartHeader />
       {carts.map((cart) => (
         <CartItem key={cart.id} cart={cart} />

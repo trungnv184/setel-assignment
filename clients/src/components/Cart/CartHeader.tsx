@@ -4,7 +4,7 @@ const CartHeader: React.FC<any> = () => {
   return (
     <Table.Header>
       <Table.Row>
-        <Table.HeaderCell singleLine>Image</Table.HeaderCell>
+        <Table.HeaderCell singleLine={true}>Image</Table.HeaderCell>
         <Table.HeaderCell>Name</Table.HeaderCell>
         <Table.HeaderCell>Price</Table.HeaderCell>
         <Table.HeaderCell>Quantity</Table.HeaderCell>

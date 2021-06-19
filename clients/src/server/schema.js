@@ -1,6 +1,6 @@
 import { gql } from 'apollo-server-express';
 import { GenericModel, OrderModel } from './models';
-import { getUUID } from './helper';
+import { getUUID, mapResponseDataForOrder } from './helper';
 
 const productModel = new GenericModel('products');
 const cartsModel = new GenericModel('carts');
@@ -31,14 +31,19 @@ export const typeDefs = gql`
     phoneNumber: String
   }
   type Order {
+    id: String
     orderItems: [Cart]
     metadata: OrderMetaData
     notes: String
+    state: String
+    createdDate: String
+    updatedDate: String
   }
 
   type Query {
     products: [Product]
     getProductsCart: [Cart]
+    getOrder(orderId: String): Order
   }
 
   type Mutation {
@@ -77,6 +82,9 @@ export const resolvers = {
     getProductsCart() {
       return cartsModel.list();
     },
+    getOrder: async (_, { orderId }) => {
+      return mapResponseDataForOrder(await orderModel.getOrder(orderId));
+    },
   },
   Mutation: {
     addToCart: async (_, { cartInput }) => {
@@ -90,7 +98,7 @@ export const resolvers = {
       });
     },
     createOrder: async (_, { orderInput }) => {
-      return orderModel.createOrder(orderInput);
+      return mapResponseDataForOrder(await orderModel.createOrder(orderInput));
     },
   },
 };

@@ -104,7 +104,9 @@ describe('OrdersController', () => {
   it('should find all orders successfully', async () => {
     jest.spyOn(orderModel, 'find').mockImplementation(() => {
       return {
-        exec: jest.fn().mockResolvedValue(ORDERS_MOCK)
+        sort: jest.fn().mockReturnValue({
+          exec: jest.fn().mockResolvedValue(ORDERS_MOCK)
+        })
       } as any;
     });
 

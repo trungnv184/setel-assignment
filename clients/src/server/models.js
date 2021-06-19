@@ -38,6 +38,9 @@ export class OrderModel {
   getList() {
     return this.api.get('/orders').then((res) => res.data);
   }
+  getOrder(orderId) {
+    return this.api.get(`/orders/${orderId}`).then((res) => res.data);
+  }
   createOrder(payload) {
     return this.api.post('/orders', payload).then((res) => res.data);
   }
