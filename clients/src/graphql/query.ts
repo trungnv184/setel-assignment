@@ -49,6 +49,31 @@ const GET_ORDER_BY_ID = gql`
   }
 `;
 
+const GET_ORDER_LIST = gql`
+  query GetOrderList {
+    getOrderList {
+      id
+      orderItems {
+        id
+        name
+        price
+        url
+        quantity
+      }
+      metadata {
+        firstName
+        lastName
+        address
+        phoneNumber
+      }
+      notes
+      state
+      createdDate
+      updatedDate
+    }
+  }
+`;
+
 const GET_ORDER_STATUS = gql`
   query GetOrderStatus($orderId: String) {
     getOrder(orderId: $orderId) {
@@ -57,4 +82,4 @@ const GET_ORDER_STATUS = gql`
   }
 `;
 
-export { GET_PRODUCTS, GET_PRODUCTS_IN_CART, GET_ORDER_BY_ID, GET_ORDER_STATUS };
+export { GET_PRODUCTS, GET_PRODUCTS_IN_CART, GET_ORDER_BY_ID, GET_ORDER_STATUS, GET_ORDER_LIST };

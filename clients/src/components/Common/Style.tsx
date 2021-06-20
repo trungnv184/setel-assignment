@@ -1,3 +1,4 @@
+import { Segment, Container } from 'semantic-ui-react';
 import styled from 'styled-components';
 
 const StyledAppContainer = styled.div`
@@ -5,4 +6,12 @@ const StyledAppContainer = styled.div`
   width: calc(100% - 60px);
 `;
 
-export { StyledAppContainer };
+const StyledSegment = styled(Segment)`
+  margin: 16px 0;
+`;
+
+const StyledContainer = styled(Container)`
+  margin: 16px 0;
+`;
+
+export { StyledAppContainer, StyledSegment, StyledContainer };

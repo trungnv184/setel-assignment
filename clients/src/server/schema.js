@@ -44,6 +44,7 @@ export const typeDefs = gql`
     products: [Product]
     getProductsCart: [Cart]
     getOrder(orderId: String): Order
+    getOrderList: [Order]
   }
 
   type Mutation {
@@ -85,6 +86,10 @@ export const resolvers = {
     },
     getOrder: async (_, { orderId }) => {
       return mapResponseDataForOrder(await orderModel.getOrder(orderId));
+    },
+    getOrderList: async () => {
+      const ordersResponse = await orderModel.getList();
+      return ordersResponse.map((orderData) => mapResponseDataForOrder(orderData));
     },
   },
   Mutation: {

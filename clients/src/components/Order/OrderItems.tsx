@@ -1,16 +1,33 @@
-import { Grid, Image, Segment, Header } from 'semantic-ui-react';
+import { Grid, Image, Segment, Label, Icon } from 'semantic-ui-react';
 import { ProductCart } from 'types/product-cart';
-import { formatMoney } from 'utils';
+import { formatDate, formatMoney, getTotalPayment } from 'utils';
 import { OrderContentStyled, OrderText } from './Order.style';
 
 interface OrderedItemProps {
   orderItems: ProductCart[];
+  createdDate: string;
+  orderState?: string;
 }
 
-const OrderItems: React.FC<OrderedItemProps> = ({ orderItems }) => {
+const OrderItems: React.FC<OrderedItemProps> = ({ orderItems, orderState, createdDate }) => {
   return (
     <Segment>
-      <Header as="h3" content="Selected Products" />
+      <Label color="green">
+        <Icon name="book" /> {`Selected Books ${orderItems.length}`}
+      </Label>
+      <Label color="blue">
+        <Icon name="payment" /> {getTotalPayment(orderItems)}
+      </Label>
+      <Label color="purple">
+        <Icon name="calendar" /> {formatDate(createdDate)}
+      </Label>
+
+      {orderState && (
+        <Label color="red">
+          <Icon name="truck" /> {orderState}
+        </Label>
+      )}
+
       <Grid columns={6}>
         {orderItems.map(({ id, url, name, price, quantity }) => (
           <Grid.Column key={id}>

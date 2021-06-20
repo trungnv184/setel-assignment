@@ -4,7 +4,7 @@ import { useParams } from 'react-router-dom';
 import { useQuery } from '@apollo/client';
 import { GET_ORDER_BY_ID } from 'graphql/query';
 import { Dimmer, Loader } from 'semantic-ui-react';
-import { OrderPayload } from 'types/order-payload';
+import { OrderResponse } from 'types/order-response';
 
 const OrderDetail: React.FC<any> = () => {
   const { orderId } = useParams<{ orderId: string }>();
@@ -22,12 +22,12 @@ const OrderDetail: React.FC<any> = () => {
 
   if (error) return <ErrorMessage />;
 
-  const orderPayload = data?.getOrder as OrderPayload;
+  const orderResponse = data?.getOrder as OrderResponse;
   return (
     <>
-      <OrderSummary metadata={orderPayload.metadata} notes={orderPayload.notes} />
+      <OrderSummary metadata={orderResponse.metadata} notes={orderResponse.notes} />
       <OrderState />
-      <OrderItems orderItems={orderPayload.orderItems} />
+      <OrderItems orderItems={orderResponse.orderItems} createdDate={orderResponse.createdDate} />
     </>
   );
 };
