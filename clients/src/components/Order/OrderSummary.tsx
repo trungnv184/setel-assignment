@@ -21,7 +21,7 @@ const OrderSummary: React.FC<OrderSummaryProps> = ({ metadata, notes }) => {
         </TextItem>
         <TextItem>
           <span className="title">Address:</span>
-          <span className="content">{metadata.firstName}</span>
+          <span className="content">{metadata.address}</span>
         </TextItem>
         <TextItem>
           <span className="title">Phone Number:</span>

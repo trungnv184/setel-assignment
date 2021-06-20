@@ -36,7 +36,7 @@ const OrderState: React.FC<any> = () => {
         </Step>
         <Step completed={orderStep >= OrderStep.DELIVERED} active={true}>
           <Step.Content>
-            <Step.Title>DELIVER</Step.Title>
+            <Step.Title>DELIVERED</Step.Title>
           </Step.Content>
         </Step>
       </>
