@@ -1,0 +1,28 @@
+
+kind:apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: graphql-server-deployment
+  labels:
+    app: graphql-server
+spec:
+  selector:
+    matchLabels:
+      app: graphql-server
+  template:
+    metadata:
+      labels:
+        app: graphql-server
+    spec:
+      containers:
+      - name: graphql-server
+        image: orders-and-payments/graphql-server:latest
+        resources:
+          limits:
+            memory: "128Mi"
+            cpu: "500m"
+        ports:
+        - name: graphql
+          containerPort: 3500
+        - name: json-server
+          containerPort: 3400

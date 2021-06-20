@@ -16,6 +16,11 @@ spec:
         backend:
           serviceName: client-app-service
           servicePort: 3000
+      - path: /graphql
+        pathType: Exact
+        backend:
+          serviceName: graphql-server-service
+          servicePort: 3500    
       - path: /api/v1/orders/?(.*)
         backend:
           serviceName: order-app-service

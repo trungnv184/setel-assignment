@@ -1,4 +1,4 @@
-version: "3"
+version: "3.7"
 
 services:
   orders:
@@ -27,6 +27,15 @@ services:
       dockerfile: Dockerfile
     ports:
       - "3000:3000"
+
+  graphql:
+    image: orders-and-payments/graphql-server:${TAG:-latest}
+    build:
+      context: ./clients/src/server
+      dockerfile: Dockerfile
+    ports:
+      - "3500:3500"
+      - "3400:3400"      
     
   redis:
     image: "bitnami/redis:latest"
@@ -40,3 +49,7 @@ services:
       - "6379:6379"
     volumes:
       - "redis_data:/bitnami/redis"
+
+volumes:
+  redis_data:
+    driver: local

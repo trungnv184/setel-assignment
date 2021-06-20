@@ -1,0 +1,14 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: graphql-server-service
+spec:
+  selector:
+    app: graphql-server
+  ports:
+  - name: graphql
+    port: 3005
+    targetPort: 3005
+  - name: json-server
+    port: 3004
+    targetPort: 3004
