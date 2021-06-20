@@ -49,6 +49,7 @@ export const typeDefs = gql`
   type Mutation {
     addToCart(cartInput: CartInput): Cart
     createOrder(orderInput: OrderInput): Order
+    cancelOrder(orderId: String): Order
   }
 
   input CartInput {
@@ -99,6 +100,10 @@ export const resolvers = {
     },
     createOrder: async (_, { orderInput }) => {
       return mapResponseDataForOrder(await orderModel.createOrder(orderInput));
+    },
+
+    cancelOrder: async (_, { orderId }) => {
+      return mapResponseDataForOrder(await orderModel.cancelOrder(orderId));
     },
   },
 };

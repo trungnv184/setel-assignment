@@ -1,12 +1,14 @@
 import { useQuery } from '@apollo/client';
+import { OrderCancellation } from 'components';
 import { GET_ORDER_STATUS } from 'graphql/query';
-import { useEffect } from 'react';
+import { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
-import { Header, Segment, Step } from 'semantic-ui-react';
+import { Button, Header, Segment, Step } from 'semantic-ui-react';
 import { OrderStep } from 'types/order-step.enum';
 import AppConfigurations, { getOrderStep } from 'utils';
 
 const OrderState: React.FC<any> = () => {
+  const [isOpeningModal, setIsOpeningModal] = useState(false);
   const { orderId } = useParams<{ orderId: string }>();
   const { data, stopPolling } = useQuery(GET_ORDER_STATUS, {
     variables: { orderId },
@@ -21,15 +23,11 @@ const OrderState: React.FC<any> = () => {
     }
   }, [stopPolling, orderStep]);
 
-  const renderOrderStep = () => {
+  const openConfirmationModal = () => setIsOpeningModal(true);
+
+  const renderOrderSteps = () => {
     return (
       <>
-        <Step completed={true}>
-          <Step.Content>
-            <Step.Title>CREATED</Step.Title>
-            <Step.Description>Your order have been created</Step.Description>
-          </Step.Content>
-        </Step>
         <Step completed={orderStep >= OrderStep.CONFIRMED} active={true}>
           <Step.Content>
             <Step.Title>CONFIRMED</Step.Title>
@@ -45,7 +43,7 @@ const OrderState: React.FC<any> = () => {
     );
   };
 
-  const renderCancelStep = () => (
+  const renderCancelledStep = () => (
     <Step active={true}>
       <Step.Content>
         <Step.Title>CANCELLED</Step.Title>
@@ -53,10 +51,33 @@ const OrderState: React.FC<any> = () => {
       </Step.Content>
     </Step>
   );
+
+  const renderCancellationOrder = () => {
+    return (
+      [OrderStep.CREATED, OrderStep.CONFIRMED].includes(orderStep) && (
+        <>
+          <OrderCancellation isOpening={isOpeningModal} onCloseModal={setIsOpeningModal} />
+          <Button negative={true} floated="right" onClick={openConfirmationModal}>
+            Cancel Order
+          </Button>
+        </>
+      )
+    );
+  };
+
   return (
     <Segment>
       <Header as="h3" content="Order Status" />
-      <Step.Group ordered={true}>{orderStep === OrderStep.CANCEL ? renderCancelStep() : renderOrderStep()}</Step.Group>
+      <Step.Group ordered={true}>
+        <Step completed={true}>
+          <Step.Content>
+            <Step.Title>CREATED</Step.Title>
+            <Step.Description>Your order have been created</Step.Description>
+          </Step.Content>
+        </Step>
+        {orderStep === OrderStep.CANCEL ? renderCancelledStep() : renderOrderSteps()}
+      </Step.Group>
+      {renderCancellationOrder()}
     </Segment>
   );
 };

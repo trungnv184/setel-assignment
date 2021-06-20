@@ -22,7 +22,7 @@ const OrderForm: React.FC<OrderFormProps> = ({ carts }) => {
   const history = useHistory();
   const [errorMessage, setErrorMessage] = useState();
 
-  const [createOrder, { data, loading }] = useMutation(CREATE_ORDER_PRODUCTS, {
+  const [createOrder, { loading }] = useMutation(CREATE_ORDER_PRODUCTS, {
     onCompleted: ({ createOrder: order }) => {
       history.push(`/order-detail/${order.id}`);
     },

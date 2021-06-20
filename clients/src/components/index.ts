@@ -9,4 +9,5 @@ export { default as OrderForm } from './Order/OrderForm';
 export { default as OrderItems } from './Order/OrderItems';
 export { default as OrderState } from './Order/OrderState';
 export { default as OrderSummary } from './Order/OrderSummary';
+export { default as OrderCancellation } from './Order/OrderCancellation';
 export { StyledAppContainer } from './Common/Style';

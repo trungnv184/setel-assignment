@@ -37,4 +37,13 @@ const CREATE_ORDER_PRODUCTS = gql`
   }
 `;
 
-export { ADD_PRODUCT_TO_CART, CREATE_ORDER_PRODUCTS };
+const CANCEL_ORDER = gql`
+  mutation CancelOrder($orderId: String) {
+    cancelOrder(orderId: $orderId) {
+      id
+      state
+    }
+  }
+`;
+
+export { ADD_PRODUCT_TO_CART, CREATE_ORDER_PRODUCTS, CANCEL_ORDER };
