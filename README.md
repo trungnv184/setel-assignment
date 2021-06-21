@@ -1,6 +1,16 @@
 ### Web application
+* Products Page
+![Products Page](https://github.com/trungnv184/setel-assignment/blob/master/design/screens/products_page.png?raw=true)
 
-- ![Products Page](https://github.com/trungnv184/setel-assignment/blob/master/design/screens/change_state_order.png?raw=true)
+* Order List Page
+![Products Page](https://github.com/trungnv184/setel-assignment/blob/master/design/screens/order_list.png?raw=true)
+
+
+* Order detail Page
+![Products Page](https://github.com/trungnv184/setel-assignment/blob/master/design/screens/change_state_order.png?raw=true)
+
+* Product Carts Page
+![Products Page](https://github.com/trungnv184/setel-assignment/blob/master/design/screens/product_carts.png?raw=true)
 
 ### High Level Design
 
