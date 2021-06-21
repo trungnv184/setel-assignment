@@ -72,6 +72,8 @@ sequenceDiagram
 - **infras**
   - deployments: all the deployment resource will define separately for each service
   - services: all the related service such as order, payment, web app ...
+  - Ingress Controller: define all mapping rules from traffic from outside the Kubernetes to cluster service 
+  
 - **desgine**
   - screenshot web app
 
