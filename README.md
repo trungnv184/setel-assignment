@@ -1,63 +1,129 @@
-<p align="center">
-  <a href="http://nestjs.com/" target="blank"><img src="https://nestjs.com/img/logo_text.svg" width="320" alt="Nest Logo" /></a>
-</p>
+### Web application
 
-[travis-image]: https://api.travis-ci.org/nestjs/nest.svg?branch=master
-[travis-url]: https://travis-ci.org/nestjs/nest
-[linux-image]: https://img.shields.io/travis/nestjs/nest/master.svg?label=linux
-[linux-url]: https://travis-ci.org/nestjs/nest
+### High Level Design
 
-  <p align="center">A progressive <a href="http://nodejs.org" target="blank">Node.js</a> framework for building efficient and scalable server-side applications, heavily inspired by <a href="https://angular.io" target="blank">Angular</a>.</p>
-    <p align="center">
-<a href="https://www.npmjs.com/~nestjscore"><img src="https://img.shields.io/npm/v/@nestjs/core.svg" alt="NPM Version" /></a>
-<a href="https://www.npmjs.com/~nestjscore"><img src="https://img.shields.io/npm/l/@nestjs/core.svg" alt="Package License" /></a>
-<a href="https://www.npmjs.com/~nestjscore"><img src="https://img.shields.io/npm/dm/@nestjs/core.svg" alt="NPM Downloads" /></a>
-<a href="https://travis-ci.org/nestjs/nest"><img src="https://api.travis-ci.org/nestjs/nest.svg?branch=master" alt="Travis" /></a>
-<a href="https://travis-ci.org/nestjs/nest"><img src="https://img.shields.io/travis/nestjs/nest/master.svg?label=linux" alt="Linux" /></a>
-<a href="https://coveralls.io/github/nestjs/nest?branch=master"><img src="https://coveralls.io/repos/github/nestjs/nest/badge.svg?branch=master#5" alt="Coverage" /></a>
-<a href="https://gitter.im/nestjs/nestjs?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge&utm_content=body_badge"><img src="https://badges.gitter.im/nestjs/nestjs.svg" alt="Gitter" /></a>
-<a href="https://opencollective.com/nest#backer"><img src="https://opencollective.com/nest/backers/badge.svg" alt="Backers on Open Collective" /></a>
-<a href="https://opencollective.com/nest#sponsor"><img src="https://opencollective.com/nest/sponsors/badge.svg" alt="Sponsors on Open Collective" /></a>
-  <a href="https://paypal.me/kamilmysliwiec"><img src="https://img.shields.io/badge/Donate-PayPal-dc3d53.svg"/></a>
-  <a href="https://twitter.com/nestframework"><img src="https://img.shields.io/twitter/follow/nestframework.svg?style=social&label=Follow"></a>
-</p>
-  <!--[![Backers on Open Collective](https://opencollective.com/nest/backers/badge.svg)](https://opencollective.com/nest#backer)
-  [![Sponsors on Open Collective](https://opencollective.com/nest/sponsors/badge.svg)](https://opencollective.com/nest#sponsor)-->
+### Sequence Diagram
+- Assume in the large order system such as amazon or biggest E-commerce site will process a thousand in short time so that reason I choose Queues proccessor to apply in this assigment.
+- Queues are a powerful design pattern that help you deal with common application scaling and performance challenges 
 
-# Orders & Payments
+```mermaid
+sequenceDiagram
+    participant O as Order Service
+    participant Q as Queue Processor
+    participant P as Payment Service
+    participant D as Database Service
 
-## Description
+    O->>Q: Create new order
+    Q->>+P: Process order payment
+    P-->>-Q: Return status
+    Note right of P: Payment return Confirmed or Cancelled
+    alt CONFIRMED
+    rect rgb(216, 243, 252)
+       Q-->>+Q: Process confirmed Job
+       Q-->>-D: Update status CONFIRMED
+       D-->>Q: return confirmed order
+       Q-->>+Q: Process Delivered Job
+       Q-->>-D: Update status DELIVERED
+       D-->>Q: return delivered order
 
-This project demonstrate an example application for making and processing orders and payments. Application architecture based on microservices implemented with Nest.JS framework.
+    end
+    else CANCELLED
+      Q-->>+Q: Process cancelled Job
+      Q-->>-D: Update status CANCELLED
+      D-->>Q: return cancelled order
+    end
 
-## Running the Application
 
-### Using Docker
 
-Please, use at the root of the repository 
-```bash
-docker-compose up -d
-```
-or
-```bash
-./start.sh
 ```
 
-To run only the backend data services (Redis, Mysql), please, use the data only compose file.
+### Code Structure
+* **clients**: web application
+  * src/server: GraphQL Server 
+* **services**
+  * orders: order service logic
+  * payments: order payment verification will return Confirmed or cancelled
+  status using `Random Number` to compare with constant value
+* **infras**
+  * deployments: all the deployment resource will define separately for each service
+  * services: all the related service such as order, payment, web app ...
+* **desgine**
+    * screenshot web app  
+   
 
-```bash
-docker-compose -f docker-compose.data-only.yml up -d
+### How to run application
+*  Because Order Service using Queues and it depends on Redis hence need to install Redis on local machine first we can reference this link how to install Redis on your machine [install redis guidline](https://gist.github.com/tomysmile/1b8a321e7c58499ef9f9441b2faa0aa8)
+* Start Web App 
+``` bash
+   cd clients 
+   yarn 
+   yarn start
 ```
-
-To stop application use at the root of the repository 
-```bash
-docker-compose down
+after running all the above command the web app will start on the http://localhost:3000
+* Start Order Service
+``` bash
+   cd services/orders 
+   npm ci 
+   npm run start
 ```
-or
-```bash
-./stop.sh
+after running all the above command the web app will start on the http://localhost:8000
+
+* Start Payment Service
+``` bash
+   cd services/payments 
+   npm ci 
+   npm run start
 ```
+after running all the above command the web app will start on the http://localhost:8001
 
-### Locally
+### Technologies stack used
+- ReactJS version 17.0.2
+- Rect Testing library
+- GraphQL 
+- Json Server
+- NestJS
+- Cloud Mongo DB
+- Rabbit MQ
+- TypeScript
 
-Please, copy `.env.example` file for each service into `.env` so that the services can be configured properly.
+### APIs End points
+* **Order Service**
+   * GET: v1/api/orders
+      * Get list of orders
+      ```curl
+      curl --location --request GET 'http://localhost:8000/v1/api/orders' 
+      ```
+   * POST: v1/api/orders
+      * Create Order
+      ```curl
+      curl --location --request POST 'http://localhost:8000/v1/api/orders' \
+      --header 'Content-Type: application/json' \
+      --data-raw '{
+        "orderItems":[
+            {
+              "id":"1",
+              "name":"IT Book",
+              "url":"url",
+              "price":500000,
+              "quantity":1
+            }
+        ],
+        "metadata":{
+            "firstName":"Trung",
+            "lastName":"Nguyen",
+            "address":"HCM",
+            "notes":"88",
+            "phoneNumber":"0906925896"
+        },
+        "notes":"Nothing"
+      }'
+    ```
+ * DELETE: v1/api/orders/:orderId
+      * Cancel Order
+    
+
+### What should I will improve for a better
+- Improve UI/UX allow user can change the quantity of selecting books in the product carts page
+- Update test coverage and add integration test level
+- Using HELM charts which simplifies the deployment of containerized application
+
