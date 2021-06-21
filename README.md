@@ -21,8 +21,8 @@
 
 ### Sequence Diagram
 
-- Assume in the large order system such as amazon or biggest E-commerce site will process a thousand in short time so that reason I choose Queues processor to apply in this assignment.
-- Queues are a powerful design pattern that help you deal with common application scaling and performance challenges
+- Assume in a large order system such as Amazon or the biggest E-commerce site will process a thousand orders in a short time so that reason I choose a Queues processor to apply in this assignment.
+- Queues are a powerful design pattern that helps you deal with common application scaling and performance challenges
 
 ![Sequence Diagram](https://github.com/trungnv184/setel-assignment/blob/master/design/sequence_diagram.png?raw=true)
 
@@ -52,9 +52,6 @@ sequenceDiagram
       Q-->>-D: Update status CANCELLED
       D-->>Q: return cancelled order
     end
-
-
-
 ```
 
 ### Code Structure
@@ -156,15 +153,10 @@ after running all the above command the web app will start on the http://localho
     }'
     ```
 
-  ```
-
-  ```
-
 - DELETE: v1/api/orders/:orderId
   - Cancel Order
 
 ### What should I will improve for a better
-
 - Improve UI/UX allow user can change the quantity of selecting books in the product carts page
 - Update test coverage and add integration test level
 - Using HELM charts which simplifies the deployment of containerized application
