@@ -13,11 +13,13 @@
 ![Products Page](https://github.com/trungnv184/setel-assignment/blob/master/design/screens/product_carts.png?raw=true)
 
 ### High Level Design
-
+![High Level Design](https://github.com/trungnv184/setel-assignment/blob/master/design/high_level_design.png?raw=true)
 ### Sequence Diagram
-
-- Assume in the large order system such as amazon or biggest E-commerce site will process a thousand in short time so that reason I choose Queues proccessor to apply in this assigment.
+- Assume in the large order system such as amazon or biggest E-commerce site will process a thousand in short time so that reason I choose Queues processor to apply in this assignment.
 - Queues are a powerful design pattern that help you deal with common application scaling and performance challenges
+
+![Sequence Diagram](https://github.com/trungnv184/setel-assignment/blob/master/design/high_level_design.png?raw=true)
+
 
 ```mermaid
 sequenceDiagram
@@ -49,6 +51,7 @@ sequenceDiagram
 
 
 ```
+
 
 ### Code Structure
 
