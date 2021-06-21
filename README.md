@@ -1,3 +1,10 @@
+### Acceptance Criteria
+- [x] As a User, I should be able to see an orders list with the corresponding data
+- [x] s a User, I should be able to open order page with the detail information about the order
+- [x] As a User, I should be able to cancel an order
+- [x] As a User, I should be able to create an order
+
+
 ### Web application
 
 - Products Page
