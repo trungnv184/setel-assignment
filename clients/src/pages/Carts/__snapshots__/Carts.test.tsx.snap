@@ -1,0 +1,264 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`CartsPage Should render carts page 1`] = `
+<div>
+  <div
+    class="ui secondary segment"
+  >
+    <form
+      class="ui form"
+    >
+      <div
+        class="ui error message"
+      >
+        <div
+          class="content"
+        >
+          <div
+            class="header"
+          >
+            Form Validation
+          </div>
+        </div>
+      </div>
+      <div
+        class="equal width fields"
+      >
+        <div
+          class="field"
+        >
+          <label>
+            First name
+          </label>
+          <div
+            class="ui input"
+          >
+            <input
+              name="firstName"
+              placeholder="First name"
+              type="text"
+              value=""
+            />
+          </div>
+        </div>
+        <div
+          class="field"
+        >
+          <label>
+            Last name
+          </label>
+          <div
+            class="ui input"
+          >
+            <input
+              name="lastName"
+              placeholder="Last name"
+              type="text"
+              value=""
+            />
+          </div>
+        </div>
+        <div
+          class="field"
+        >
+          <label>
+            Phone Number
+          </label>
+          <div
+            class="ui input"
+          >
+            <input
+              name="phoneNumber"
+              placeholder="Enter Phone Number"
+              type="text"
+              value=""
+            />
+          </div>
+        </div>
+      </div>
+      <div
+        class="field"
+      >
+        <label>
+          Address
+        </label>
+        <div
+          class="ui input"
+        >
+          <input
+            name="address"
+            placeholder="Enter your address to deliver"
+            type="text"
+            value=""
+          />
+        </div>
+      </div>
+      <div
+        class="field"
+      >
+        <label>
+          Notes
+        </label>
+        <textarea
+          name="notes"
+          placeholder="Add your special notes"
+          rows="3"
+        />
+      </div>
+      <div
+        class="field"
+      >
+        <button
+          class="ui blue button"
+        >
+          Submit
+        </button>
+      </div>
+    </form>
+  </div>
+  <table
+    class="ui celled padded table"
+  >
+    <thead
+      class=""
+    >
+      <tr
+        class=""
+      >
+        <th
+          class="single line"
+        >
+          Image
+        </th>
+        <th
+          class=""
+        >
+          Name
+        </th>
+        <th
+          class=""
+        >
+          Price
+        </th>
+        <th
+          class=""
+        >
+          Quantity
+        </th>
+      </tr>
+    </thead>
+    <tbody
+      class=""
+    >
+      <tr
+        class=""
+      >
+        <td
+          class=""
+        >
+          <img
+            class="ui small image"
+            src="https://salt.tikicdn.com/cache/280x280/ts/product/5c/07/92/7ac1298303440baa2ed74fa20c9f7385.jpg"
+          />
+        </td>
+        <td
+          class="single line"
+        >
+          Làm chủ cảm xúc
+        </td>
+        <td
+          class=""
+        >
+          200.000 ₫
+        </td>
+        <td
+          class=""
+        >
+          1
+        </td>
+      </tr>
+      <tr
+        class=""
+      >
+        <td
+          class=""
+        >
+          <img
+            class="ui small image"
+            src="https://salt.tikicdn.com/cache/280x280/ts/product/59/e3/e7/642ce38017ac1d35f2e87234b6fd56f2.jpg"
+          />
+        </td>
+        <td
+          class="single line"
+        >
+          Tâm lý học hạnh phúc
+        </td>
+        <td
+          class=""
+        >
+          200.000 ₫
+        </td>
+        <td
+          class=""
+        >
+          1
+        </td>
+      </tr>
+      <tr
+        class=""
+      >
+        <td
+          class=""
+        >
+          <img
+            class="ui small image"
+            src="https://salt.tikicdn.com/cache/280x280/ts/product/5f/36/dd/c64c91016b320ae4591efcf93d0ebf30.jpg"
+          />
+        </td>
+        <td
+          class="single line"
+        >
+          Dạy con học ít hiểu nhiều
+        </td>
+        <td
+          class=""
+        >
+          200.000 ₫
+        </td>
+        <td
+          class=""
+        >
+          1
+        </td>
+      </tr>
+      <tr
+        class=""
+      >
+        <td
+          class=""
+        >
+          <img
+            class="ui small image"
+            src="https://salt.tikicdn.com/cache/280x280/ts/product/95/c5/71/f260011660001af960c42d7d2f1c5dc1.jpg"
+          />
+        </td>
+        <td
+          class="single line"
+        >
+          Đừng chạy theo số đông
+        </td>
+        <td
+          class=""
+        >
+          200.000 ₫
+        </td>
+        <td
+          class=""
+        >
+          1
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+`;

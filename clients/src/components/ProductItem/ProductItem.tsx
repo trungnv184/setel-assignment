@@ -28,7 +28,7 @@ const ProductItem: React.FC<ProductItemProps> = ({ name, url, price, rating }) =
     <Card raised={true}>
       <Image src={url} size="large" wrapped={true} ui={false} />
       <Card.Content>
-        <Card.Header>{name}</Card.Header>
+        <Card.Header data-testid="book-name">{name}</Card.Header>
         <Card.Meta>
           <strong>{formatMoney(price)}</strong>
         </Card.Meta>

@@ -33,7 +33,9 @@ const OrderItems: React.FC<OrderedItemProps> = ({ orderItems, orderState, create
           <Grid.Column key={id}>
             <OrderContentStyled>
               <Image src={url} size="small" />
-              <OrderText bold={true}>{name}</OrderText>
+              <OrderText bold={true} data-testid="book-name">
+                {name}
+              </OrderText>
               <OrderText bold={true}>Price:{formatMoney(price)}</OrderText>
               <OrderText>Quantity:{quantity}</OrderText>
             </OrderContentStyled>

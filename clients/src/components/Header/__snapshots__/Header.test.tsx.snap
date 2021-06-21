@@ -1,0 +1,59 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Header should match snapshot 1`] = `
+<div>
+  <div
+    class="sc-bdnxRM dKbILC"
+  >
+    <div
+      class="ui blue huge inverted menu"
+    >
+      <div
+        class="item"
+      >
+        <i
+          aria-hidden="true"
+          class="home icon"
+        />
+        <a
+          href="/"
+        >
+          <strong>
+            BOOK STORE
+          </strong>
+        </a>
+      </div>
+      <div
+        class="right menu"
+      >
+        <div
+          class="item"
+        >
+          <i
+            aria-hidden="true"
+            class="ordered list icon"
+          />
+          <a
+            href="/orders"
+          >
+            Your Orders
+          </a>
+        </div>
+        <div
+          class="active item"
+        >
+          <i
+            aria-hidden="true"
+            class="cart icon"
+          />
+          <a
+            href="/your-cart"
+          >
+            Your Cart
+          </a>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+`;

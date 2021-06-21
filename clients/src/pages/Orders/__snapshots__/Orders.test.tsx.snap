@@ -1,0 +1,260 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`OrdersPage Should render products page 1`] = `
+<div>
+  <div
+    class="ui container sc-gKAaRy OrlUr"
+  >
+    <div
+      class="ui segment"
+    >
+      <div
+        class="ui green label"
+      >
+        <i
+          aria-hidden="true"
+          class="book icon"
+        />
+         
+        Selected Books 1
+      </div>
+      <div
+        class="ui blue label"
+      >
+        <i
+          aria-hidden="true"
+          class="payment icon"
+        />
+         
+        500 ₫
+      </div>
+      <div
+        class="ui purple label"
+      >
+        <i
+          aria-hidden="true"
+          class="calendar icon"
+        />
+         
+        20-06-2021
+      </div>
+      <div
+        class="ui red label"
+      >
+        <i
+          aria-hidden="true"
+          class="truck icon"
+        />
+         
+        Delivered
+      </div>
+      <div
+        class="ui six column grid"
+      >
+        <div
+          class="column"
+        >
+          <div
+            class="sc-gtsrHT igIUx"
+          >
+            <img
+              class="ui small image"
+              src="url"
+            />
+            <div
+              class="sc-dlnjwi guJDWs"
+              data-testid="book-name"
+            >
+              IT Book
+            </div>
+            <div
+              class="sc-dlnjwi guJDWs"
+            >
+              Price:
+              500 ₫
+            </div>
+            <div
+              class="sc-dlnjwi dHdVQU"
+            >
+              Quantity:
+              1
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div
+    class="ui container sc-gKAaRy OrlUr"
+  >
+    <div
+      class="ui segment"
+    >
+      <div
+        class="ui green label"
+      >
+        <i
+          aria-hidden="true"
+          class="book icon"
+        />
+         
+        Selected Books 4
+      </div>
+      <div
+        class="ui blue label"
+      >
+        <i
+          aria-hidden="true"
+          class="payment icon"
+        />
+         
+        800.000 ₫
+      </div>
+      <div
+        class="ui purple label"
+      >
+        <i
+          aria-hidden="true"
+          class="calendar icon"
+        />
+         
+        20-06-2021
+      </div>
+      <div
+        class="ui red label"
+      >
+        <i
+          aria-hidden="true"
+          class="truck icon"
+        />
+         
+        Delivered
+      </div>
+      <div
+        class="ui six column grid"
+      >
+        <div
+          class="column"
+        >
+          <div
+            class="sc-gtsrHT igIUx"
+          >
+            <img
+              class="ui small image"
+              src="https://salt.tikicdn.com/cache/280x280/ts/product/5c/07/92/7ac1298303440baa2ed74fa20c9f7385.jpg"
+            />
+            <div
+              class="sc-dlnjwi guJDWs"
+              data-testid="book-name"
+            >
+              Làm chủ cảm xúc
+            </div>
+            <div
+              class="sc-dlnjwi guJDWs"
+            >
+              Price:
+              200.000 ₫
+            </div>
+            <div
+              class="sc-dlnjwi dHdVQU"
+            >
+              Quantity:
+              1
+            </div>
+          </div>
+        </div>
+        <div
+          class="column"
+        >
+          <div
+            class="sc-gtsrHT igIUx"
+          >
+            <img
+              class="ui small image"
+              src="https://salt.tikicdn.com/cache/280x280/ts/product/59/e3/e7/642ce38017ac1d35f2e87234b6fd56f2.jpg"
+            />
+            <div
+              class="sc-dlnjwi guJDWs"
+              data-testid="book-name"
+            >
+              Tâm lý học hạnh phúc
+            </div>
+            <div
+              class="sc-dlnjwi guJDWs"
+            >
+              Price:
+              200.000 ₫
+            </div>
+            <div
+              class="sc-dlnjwi dHdVQU"
+            >
+              Quantity:
+              1
+            </div>
+          </div>
+        </div>
+        <div
+          class="column"
+        >
+          <div
+            class="sc-gtsrHT igIUx"
+          >
+            <img
+              class="ui small image"
+              src="https://salt.tikicdn.com/cache/280x280/ts/product/5f/36/dd/c64c91016b320ae4591efcf93d0ebf30.jpg"
+            />
+            <div
+              class="sc-dlnjwi guJDWs"
+              data-testid="book-name"
+            >
+              Dạy con học ít hiểu nhiều
+            </div>
+            <div
+              class="sc-dlnjwi guJDWs"
+            >
+              Price:
+              200.000 ₫
+            </div>
+            <div
+              class="sc-dlnjwi dHdVQU"
+            >
+              Quantity:
+              1
+            </div>
+          </div>
+        </div>
+        <div
+          class="column"
+        >
+          <div
+            class="sc-gtsrHT igIUx"
+          >
+            <img
+              class="ui small image"
+              src="https://salt.tikicdn.com/cache/280x280/ts/product/95/c5/71/f260011660001af960c42d7d2f1c5dc1.jpg"
+            />
+            <div
+              class="sc-dlnjwi guJDWs"
+              data-testid="book-name"
+            >
+              Đừng chạy theo số đông
+            </div>
+            <div
+              class="sc-dlnjwi guJDWs"
+            >
+              Price:
+              200.000 ₫
+            </div>
+            <div
+              class="sc-dlnjwi dHdVQU"
+            >
+              Quantity:
+              1
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+`;

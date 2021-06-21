@@ -10,9 +10,11 @@ const CartList: React.FC<CartListProps> = ({ carts }) => {
   return (
     <Table celled={true} padded={true}>
       <CartHeader />
-      {carts.map((cart) => (
-        <CartItem key={cart.id} cart={cart} />
-      ))}
+      <Table.Body>
+        {carts.map((cart) => (
+          <CartItem key={cart.id} cart={cart} />
+        ))}
+      </Table.Body>
     </Table>
   );
 };

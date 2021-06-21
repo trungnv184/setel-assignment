@@ -1,0 +1,219 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`OrderDetailPage Should render order detail page page 1`] = `
+<div>
+  <div
+    class="ui segment"
+  >
+    <div
+      class="ui fluid left aligned container"
+    >
+      <h3
+        class="ui header"
+      >
+        # Order Summary
+      </h3>
+      <div
+        class="sc-hKFxyN idPHKU"
+      >
+        <span
+          class="title"
+        >
+          First Name:
+        </span>
+        <span
+          class="content"
+        >
+          Trung
+        </span>
+      </div>
+      <div
+        class="sc-hKFxyN idPHKU"
+      >
+        <span
+          class="title"
+        >
+          Last Name:
+        </span>
+        <span
+          class="content"
+        >
+          Nguyen
+        </span>
+      </div>
+      <div
+        class="sc-hKFxyN idPHKU"
+      >
+        <span
+          class="title"
+        >
+          Address:
+        </span>
+        <span
+          class="content"
+        >
+          HCM
+        </span>
+      </div>
+      <div
+        class="sc-hKFxyN idPHKU"
+      >
+        <span
+          class="title"
+        >
+          Phone Number:
+        </span>
+        <span
+          class="content"
+        >
+          0906925896
+        </span>
+      </div>
+      <div
+        class="sc-hKFxyN idPHKU"
+      >
+        <span
+          class="title"
+        >
+          Notes:
+        </span>
+        <span
+          class="content"
+        >
+          Nothing
+        </span>
+      </div>
+    </div>
+  </div>
+  <div
+    class="ui segment"
+  >
+    <h3
+      class="ui header"
+    >
+      Order Status
+    </h3>
+    <div
+      class="ui ordered steps"
+    >
+      <div
+        class="completed step"
+      >
+        <div
+          class="content"
+        >
+          <div
+            class="title"
+          >
+            CREATED
+          </div>
+          <div
+            class="description"
+          >
+            Your order have been created
+          </div>
+        </div>
+      </div>
+      <div
+        class="active completed step"
+      >
+        <div
+          class="content"
+        >
+          <div
+            class="title"
+          >
+            CONFIRMED
+          </div>
+          <div
+            class="description"
+          >
+            Your order have been confirmed
+          </div>
+        </div>
+      </div>
+      <div
+        class="active completed step"
+      >
+        <div
+          class="content"
+        >
+          <div
+            class="title"
+          >
+            DELIVERED
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div
+    class="ui segment"
+  >
+    <div
+      class="ui green label"
+    >
+      <i
+        aria-hidden="true"
+        class="book icon"
+      />
+       
+      Selected Books 1
+    </div>
+    <div
+      class="ui blue label"
+    >
+      <i
+        aria-hidden="true"
+        class="payment icon"
+      />
+       
+      500 ₫
+    </div>
+    <div
+      class="ui purple label"
+    >
+      <i
+        aria-hidden="true"
+        class="calendar icon"
+      />
+       
+      20-06-2021
+    </div>
+    <div
+      class="ui six column grid"
+    >
+      <div
+        class="column"
+      >
+        <div
+          class="sc-gtsrHT igIUx"
+        >
+          <img
+            class="ui small image"
+            src="url"
+          />
+          <div
+            class="sc-dlnjwi guJDWs"
+            data-testid="book-name"
+          >
+            Book
+          </div>
+          <div
+            class="sc-dlnjwi guJDWs"
+          >
+            Price:
+            500 ₫
+          </div>
+          <div
+            class="sc-dlnjwi dHdVQU"
+          >
+            Quantity:
+            1
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+`;

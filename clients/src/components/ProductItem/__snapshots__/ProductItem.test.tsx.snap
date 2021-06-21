@@ -1,0 +1,89 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`ProductItem should match snapshot 1`] = `
+<div>
+  <div
+    class="ui raised card"
+  >
+    <div
+      class="large image"
+    >
+      <img
+        src="https://salt.tikicdn.com/cache/280x280/ts/product/6e/41/a2/721878ef916620dbcc7ff569adcd577d.jpg"
+      />
+    </div>
+    <div
+      class="content"
+    >
+      <div
+        class="header"
+        data-testid="book-name"
+      >
+        Kiên trì hay từ bỏ
+      </div>
+      <div
+        class="meta"
+      >
+        <strong>
+          200.000 ₫
+        </strong>
+      </div>
+    </div>
+    <div
+      class="extra content"
+    >
+      <div
+        class="ui star rating"
+        role="radiogroup"
+        tabindex="-1"
+      >
+        <i
+          aria-checked="false"
+          aria-posinset="1"
+          aria-setsize="5"
+          class="active icon"
+          role="radio"
+          tabindex="0"
+        />
+        <i
+          aria-checked="false"
+          aria-posinset="2"
+          aria-setsize="5"
+          class="active icon"
+          role="radio"
+          tabindex="0"
+        />
+        <i
+          aria-checked="false"
+          aria-posinset="3"
+          aria-setsize="5"
+          class="active icon"
+          role="radio"
+          tabindex="0"
+        />
+        <i
+          aria-checked="false"
+          aria-posinset="4"
+          aria-setsize="5"
+          class="active icon"
+          role="radio"
+          tabindex="0"
+        />
+        <i
+          aria-checked="true"
+          aria-posinset="5"
+          aria-setsize="5"
+          class="active icon"
+          role="radio"
+          tabindex="0"
+        />
+      </div>
+      <button
+        class="ui red right floated button"
+      >
+        Buy
+      </button>
+    </div>
+  </div>
+</div>
+`;
