@@ -1,13 +1,24 @@
 import { CreateOrderDto } from '@dto';
 import { Order } from '@schemas';
 import { OrdersService } from './orders.service';
-import { Controller, Get, Post, Param, Body, Delete, UsePipes, ValidationPipe } from '@nestjs/common';
+import { Controller, Get, Post, Param, Body, Delete, UsePipes, ValidationPipe, HttpStatus } from '@nestjs/common';
+import { ApiResponse, ApiTags } from '@nestjs/swagger';
 
 @Controller('orders')
+@ApiTags('orders')
 export class OrdersController {
   constructor(private orderService: OrdersService) {}
 
   @Get()
+  @ApiResponse({
+    status: HttpStatus.FORBIDDEN,
+    description: 'Forbidden response'
+  })
+  @ApiResponse({
+    status: HttpStatus.CREATED,
+    type: [Order],
+    description: 'Response orders'
+  })
   public async getAllOrders(): Promise<Order[]> {
     return this.orderService.all();
   }
